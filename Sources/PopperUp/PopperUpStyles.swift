@@ -9,4 +9,5 @@ import Foundation
 
 public enum PopperUpStyles {
     case bottom
+    case hud
 }

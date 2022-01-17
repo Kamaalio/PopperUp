@@ -1,22 +1,12 @@
 //
-//  PopupView.swift
+//  BottomPopupView.swift
 //  
 //
-//  Created by Kamaal M Farah on 22/12/2021.
+//  Created by Kamaal M Farah on 17/01/2022.
 //
 
 import SwiftUI
 import SalmonUI
-
-struct PopupView: View {
-    @ObservedObject var manager: PopperUpManager
-
-    var body: some View {
-        switch manager.style {
-        case .bottom: BottomPopupView(manager: manager)
-        }
-    }
-}
 
 struct BottomPopupView: View {
     @ObservedObject var manager: PopperUpManager
@@ -53,8 +43,8 @@ struct BottomPopupView: View {
     }
 }
 
-struct PopupView_Previews: PreviewProvider {
+struct BottomPopupView_Previews: PreviewProvider {
     static var previews: some View {
-        PopupView(manager: .init())
+        BottomPopupView(manager: .init())
     }
 }
