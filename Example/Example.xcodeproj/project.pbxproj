@@ -13,6 +13,8 @@
 		2CB57C4D2794C858000A4591 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB57C3B2794C84F000A4591 /* ContentView.swift */; };
 		2CB57C4E2794C858000A4591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CB57C3C2794C858000A4591 /* Assets.xcassets */; };
 		2CB57C4F2794C858000A4591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CB57C3C2794C858000A4591 /* Assets.xcassets */; };
+		2CE5127E2795F697002E1A6C /* PopperUp in Frameworks */ = {isa = PBXBuildFile; productRef = 2CE5127D2795F697002E1A6C /* PopperUp */; };
+		2CE512802795F6A5002E1A6C /* PopperUp in Frameworks */ = {isa = PBXBuildFile; productRef = 2CE5127F2795F6A5002E1A6C /* PopperUp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CE512802795F6A5002E1A6C /* PopperUp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CE5127E2795F697002E1A6C /* PopperUp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,11 +51,11 @@
 		2CB57C342794C84F000A4591 = {
 			isa = PBXGroup;
 			children = (
-				2CB57C5D2794C925000A4591 /* Targets */,
 				2CB57C592794C8C4000A4591 /* Frameworks */,
 				2CB57C5B2794C914000A4591 /* Packages */,
 				2CB57C422794C858000A4591 /* Products */,
 				2CB57C392794C84F000A4591 /* Shared */,
+				2CB57C5D2794C925000A4591 /* Targets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +134,9 @@
 			dependencies = (
 			);
 			name = "Example (iOS)";
+			packageProductDependencies = (
+				2CE5127F2795F6A5002E1A6C /* PopperUp */,
+			);
 			productName = "Example (iOS)";
 			productReference = 2CB57C412794C858000A4591 /* Example.app */;
 			productType = "com.apple.product-type.application";
@@ -147,6 +154,9 @@
 			dependencies = (
 			);
 			name = "Example (macOS)";
+			packageProductDependencies = (
+				2CE5127D2795F697002E1A6C /* PopperUp */,
+			);
 			productName = "Example (macOS)";
 			productReference = 2CB57C472794C858000A4591 /* Example.app */;
 			productType = "com.apple.product-type.application";
@@ -490,6 +500,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2CE5127D2795F697002E1A6C /* PopperUp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PopperUp;
+		};
+		2CE5127F2795F6A5002E1A6C /* PopperUp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PopperUp;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2CB57C352794C84F000A4591 /* Project object */;
 }
