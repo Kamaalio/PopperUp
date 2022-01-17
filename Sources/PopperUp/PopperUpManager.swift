@@ -12,8 +12,9 @@ public final class PopperUpManager: ObservableObject {
     @Published var isShown = false
     @Published var popupTitle = ""
     @Published var popupDescription: String?
-    @Published private(set) var popperUpType: PopperUpTypes = .success
-    @Published private(set) var config: PopperUpConfig
+    @Published var popperUpType: PopperUpTypes = .success
+    @Published var style: PopperUpStyles = .bottom
+    @Published var config: PopperUpConfig
     @Published private var lastTimeout: TimeInterval? {
         didSet { lastTimeoutDidSet() }
     }
@@ -27,11 +28,14 @@ public final class PopperUpManager: ObservableObject {
     public func showPopup(
         ofType type: PopperUpTypes,
         title: String,
-        description: String? = nil, timeout: TimeInterval? = nil) {
+        description: String? = nil,
+        style: PopperUpStyles = .bottom,
+        timeout: TimeInterval? = nil) {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
 
                 self.popperUpType = type
+                self.style = style
                 self.popupTitle = title
                 self.popupDescription = description
                 withAnimation(.easeOut(duration: 0.5)) { self.isShown = true }

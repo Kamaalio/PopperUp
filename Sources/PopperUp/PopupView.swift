@@ -12,6 +12,16 @@ struct PopupView: View {
     @ObservedObject var manager: PopperUpManager
 
     var body: some View {
+        switch manager.style {
+        case .bottom: BottomPopupView(manager: manager)
+        }
+    }
+}
+
+struct BottomPopupView: View {
+    @ObservedObject var manager: PopperUpManager
+
+    var body: some View {
         KJustStack {
             HStack(alignment: .top) {
                 Image(systemName: manager.popperUpType.iconName)
