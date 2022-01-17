@@ -14,20 +14,23 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button(action: {
-                popperUpManager.showPopup(ofType: .success, title: "Popup", description: "Description", timeout: 3)
+                popperUpManager.showPopup(
+                    ofType: .success,
+                    style: .bottom(title: "Title", description: "Description"),
+                    timeout: 3)
             }) {
                 Text("Bottom popup")
             }
-            Button(action: {
-                popperUpManager.showPopup(
-                    ofType: .success,
-                    title: "Popup",
-                    description: "Description",
-                    style: .hud,
-                    timeout: 3)
-            }) {
-                Text("Hud popup")
-            }
+//            Button(action: {
+//                popperUpManager.showPopup(
+//                    ofType: .success,
+//                    title: "Popup",
+//                    description: "Description",
+//                    style: .hud,
+//                    timeout: 3)
+//            }) {
+//                Text("Hud popup")
+//            }
         }
         .frame(minWidth: 300, minHeight: 300)
         .withPopperUp(popperUpManager)

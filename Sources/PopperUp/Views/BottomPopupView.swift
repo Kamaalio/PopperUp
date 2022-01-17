@@ -17,10 +17,10 @@ struct BottomPopupView: View {
                 Image(systemName: manager.popperUpType.iconName)
                     .foregroundColor(manager.popperUpType.color)
                 VStack(alignment: .leading) {
-                    Text(manager.popupTitle)
+                    Text(manager.title)
                         .foregroundColor(manager.popperUpType.color)
                         .bold()
-                    if let description = manager.popupDescription {
+                    if let description = manager.description {
                         Text(description)
                             .foregroundColor(.secondary)
                     }

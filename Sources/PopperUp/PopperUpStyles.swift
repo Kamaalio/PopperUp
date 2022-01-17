@@ -8,6 +8,6 @@
 import Foundation
 
 public enum PopperUpStyles {
-    case bottom
+    case bottom(title: String, description: String?)
     case hud
 }
