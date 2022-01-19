@@ -14,15 +14,17 @@ struct BottomPopupView: View {
     var body: some View {
         KJustStack {
             HStack(alignment: .top) {
-                Image(systemName: manager.popperUpType.iconName)
-                    .foregroundColor(manager.popperUpType.color)
-                VStack(alignment: .leading) {
-                    Text(manager.title)
-                        .foregroundColor(manager.popperUpType.color)
-                        .bold()
-                    if let description = manager.description {
-                        Text(description)
-                            .foregroundColor(.secondary)
+                if let bottomType = manager.bottomType {
+                    Image(systemName: bottomType.iconName)
+                        .foregroundColor(bottomType.color)
+                    VStack(alignment: .leading) {
+                        Text(manager.title)
+                            .foregroundColor(bottomType.color)
+                            .bold()
+                        if let description = manager.description {
+                            Text(description)
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
                 Spacer()

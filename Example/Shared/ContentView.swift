@@ -15,22 +15,21 @@ struct ContentView: View {
         VStack {
             Button(action: {
                 popperUpManager.showPopup(
-                    ofType: .success,
-                    style: .bottom(title: "Title", description: "Description"),
+                    style: .bottom(title: "Title", type: .success, description: "Description"),
                     timeout: 3)
             }) {
                 Text("Bottom popup")
             }
-//            Button(action: {
+            Button(action: {
 //                popperUpManager.showPopup(
 //                    ofType: .success,
 //                    title: "Popup",
 //                    description: "Description",
 //                    style: .hud,
 //                    timeout: 3)
-//            }) {
-//                Text("Hud popup")
-//            }
+            }) {
+                Text("Hud popup")
+            }
         }
         .frame(minWidth: 300, minHeight: 300)
         .withPopperUp(popperUpManager)

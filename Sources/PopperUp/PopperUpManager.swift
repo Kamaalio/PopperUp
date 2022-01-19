@@ -10,8 +10,7 @@ import SwiftUI
 public final class PopperUpManager: ObservableObject {
 
     @Published var isShown = false
-    @Published var popperUpType: PopperUpTypes = .success
-    @Published var style: PopperUpStyles = .bottom(title: "", description: nil)
+    @Published var style: PopperUpStyles = .bottom(title: "", type: .success, description: nil)
     @Published var config: PopperUpConfig
     @Published private var lastTimeout: TimeInterval? {
         didSet { lastTimeoutDidSet() }
@@ -25,26 +24,31 @@ public final class PopperUpManager: ObservableObject {
 
     var title: String {
         switch style {
-        case .bottom(title: let title, description: _): return title
+        case .bottom(title: let title, type: _, description: _): return title
         case .hud: return ""
         }
     }
 
     var description: String? {
         switch style {
-        case .bottom(title: _, description: let description): return description
+        case .bottom(title: _, type: _, description: let description): return description
+        case .hud: return nil
+        }
+    }
+
+    var bottomType: PopperUpBottomType? {
+        switch style {
+        case .bottom(title: _, type: let type, description: _): return type
         case .hud: return nil
         }
     }
 
     public func showPopup(
-        ofType type: PopperUpTypes,
         style: PopperUpStyles,
         timeout: TimeInterval? = nil) {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
 
-                self.popperUpType = type
                 self.style = style
                 withAnimation(.easeOut(duration: 0.5)) { self.isShown = true }
                 self.lastTimeout = timeout
