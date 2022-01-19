@@ -13,9 +13,31 @@ struct HudPopupView: View {
 
     var body: some View {
         KJustStack {
-            Text("Hello")
+            HStack {
+                Image(systemName: "person")
+                    .size(Self.imageSize)
+                VStack {
+                    Text(manager.title)
+                    if let description = manager.description {
+                        Text(description)
+                            .font(.callout)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                Text("")
+                    .frame(width: Self.imageSize.width, height: Self.imageSize.height)
+            }
+            .padding(.vertical, 4)
+            .padding(.horizontal, 12)
+            .background(manager.config.backgroundColor)
+            .cornerRadius(24)
         }
+        .ktakeWidthEagerly(alignment: .center)
+        .padding(.top, 8)
+        .transition(.move(edge: .top))
     }
+
+    private static let imageSize = CGSize(width: 14, height: 14)
 }
 
 struct HudPopupView_Previews: PreviewProvider {

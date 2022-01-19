@@ -21,7 +21,7 @@ struct ContentView: View {
                 Text("Bottom popup")
             }
             Button(action: {
-                popperUpManager.showPopup(style: .hud, timeout: 3)
+                popperUpManager.showPopup(style: .hud(title: "Empty thing", description: "Below thing"), timeout: 3)
             }) {
                 Text("Hud popup")
             }

@@ -9,7 +9,7 @@ import SwiftUI
 
 public enum PopperUpStyles {
     case bottom(title: String, type: PopperUpBottomType, description: String?)
-    case hud
+    case hud(title: String, description: String?)
 }
 
 public enum PopperUpBottomType {
