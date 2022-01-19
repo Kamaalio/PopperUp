@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SalmonUI
 
 struct HudPopupView: View {
     @ObservedObject var manager: PopperUpManager
 
     var body: some View {
-        Text("Hello")
+        KJustStack {
+            Text("Hello")
+        }
     }
 }
 
