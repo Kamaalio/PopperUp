@@ -14,9 +14,18 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button(action: {
-                popperUpManager.showPopup(ofType: .success, title: "Popup", description: "Description", timeout: 3)
+                popperUpManager.showPopup(
+                    style: .bottom(title: "Title", type: .success, description: "Description"),
+                    timeout: 3)
             }) {
                 Text("Bottom popup")
+            }
+            Button(action: {
+                popperUpManager.showPopup(
+                    style: .hud(title: "Empty thing", systemImageName: "airpodspro", description: "Below thing"),
+                    timeout: nil)
+            }) {
+                Text("Hud popup")
             }
         }
         .frame(minWidth: 300, minHeight: 300)
