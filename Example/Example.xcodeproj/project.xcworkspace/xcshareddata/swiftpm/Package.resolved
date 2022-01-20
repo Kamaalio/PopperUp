@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SalmonUI",
+        "repositoryURL": "https://github.com/kamaal111/SalmonUI.git",
+        "state": {
+          "branch": null,
+          "revision": "c2fec1e2bf1910fdd3646b6f720eaf32c5db6f0d",
+          "version": "4.3.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

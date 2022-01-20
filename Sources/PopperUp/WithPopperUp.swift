@@ -10,8 +10,13 @@ import SalmonUI
 
 extension View {
     public func withPopperUp(@ObservedObject _ manager: PopperUpManager) -> some View {
-        self
-            .popup(isPresented: $manager.isShown, alignment: .bottom, content: {
+        let alignment: Alignment
+        switch manager.style {
+        case .hud: alignment = .top
+        case .bottom: alignment = .bottom
+        }
+        return self
+            .popup(isPresented: $manager.isShown, alignment: alignment, content: {
                 PopupView(manager: manager)
             })
             .environmentObject(manager)
