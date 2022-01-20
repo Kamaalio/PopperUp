@@ -1,14 +1,18 @@
 //
-//  PopperUpTypes.swift
+//  PopperUpStyles.swift
 //  
 //
-//  Created by Kamaal M Farah on 22/12/2021.
+//  Created by Kamaal M Farah on 17/01/2022.
 //
 
-import Foundation
 import SwiftUI
 
-public enum PopperUpTypes {
+public enum PopperUpStyles {
+    case bottom(title: String, type: PopperUpBottomType, description: String?)
+    case hud(title: String, systemImageName: String, description: String?)
+}
+
+public enum PopperUpBottomType {
     case success
     case warning
     case error
