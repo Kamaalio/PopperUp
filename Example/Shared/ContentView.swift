@@ -23,7 +23,7 @@ struct ContentView: View {
             Button(action: {
                 popperUpManager.showPopup(
                     style: .hud(title: "Empty thing", systemImageName: "airpodspro", description: "Below thing"),
-                    timeout: 3)
+                    timeout: nil)
             }) {
                 Text("Hud popup")
             }

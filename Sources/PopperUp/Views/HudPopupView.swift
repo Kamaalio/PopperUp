@@ -11,6 +11,8 @@ import SalmonUI
 struct HudPopupView: View {
     @ObservedObject var manager: PopperUpManager
 
+    @State private var offset: CGSize = .zero
+
     var body: some View {
         KJustStack {
             HStack {
@@ -37,6 +39,25 @@ struct HudPopupView: View {
         .ktakeWidthEagerly(alignment: .center)
         .padding(.top, 8)
         .transition(.move(edge: .top))
+        .offset(offset)
+        .gesture(
+            DragGesture()
+                .onChanged(onDrag(_:))
+                .onEnded(onDragEnd(_:)))
+    }
+
+    private func onDrag(_ value: DragGesture.Value) {
+        let newHeight = value.translation.height
+        guard newHeight <= 0 else { return }
+        offset = CGSize(width: offset.width, height: value.translation.height)
+    }
+
+    private func onDragEnd(_ value: DragGesture.Value) {
+        if offset.height < -12 {
+            manager.hidePopup()
+        } else {
+            offset = .zero
+        }
     }
 
     private static let imageSize = CGSize(width: 14, height: 14)
