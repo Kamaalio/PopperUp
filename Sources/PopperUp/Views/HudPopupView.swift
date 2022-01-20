@@ -14,8 +14,10 @@ struct HudPopupView: View {
     var body: some View {
         KJustStack {
             HStack {
-                Image(systemName: "person")
-                    .size(Self.imageSize)
+                if let systemImageName = manager.systemImageName {
+                    Image(systemName: systemImageName)
+                        .size(Self.imageSize)
+                }
                 VStack {
                     Text(manager.title)
                     if let description = manager.description {

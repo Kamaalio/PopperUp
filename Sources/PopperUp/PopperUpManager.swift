@@ -25,14 +25,21 @@ public final class PopperUpManager: ObservableObject {
     var title: String {
         switch style {
         case .bottom(title: let title, type: _, description: _): return title
-        case .hud(title: let title, description: _): return title
+        case .hud(title: let title, systemImageName: _, description: _): return title
         }
     }
 
     var description: String? {
         switch style {
         case .bottom(title: _, type: _, description: let description): return description
-        case .hud(title: _, description: let description): return description
+        case .hud(title: _, systemImageName: _, description: let description): return description
+        }
+    }
+
+    var systemImageName: String? {
+        switch style {
+        case .bottom: return nil
+        case .hud(title: _, systemImageName: let systemImageName, description: _): return systemImageName
         }
     }
 
