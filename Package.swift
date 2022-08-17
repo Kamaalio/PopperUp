@@ -14,7 +14,7 @@ let package = Package(
             targets: ["PopperUp"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/kamaal111/SalmonUI.git", "4.3.3"..<"5.0.0"),
+        .package(url: "https://github.com/kamaal111/SalmonUI.git", "5.0.0"..<"6.0.0"),
     ],
     targets: [
         .target(

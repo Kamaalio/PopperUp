@@ -8,8 +8,4 @@
 import XCTest
 @testable import PopperUp
 
-final class PopperUpTests: XCTestCase {
-    func testExample() throws {
-        XCTAssert(true)
-    }
-}
+final class PopperUpTests: XCTestCase { }
