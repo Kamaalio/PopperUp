@@ -9,7 +9,11 @@ import SwiftUI
 import PopperUp
 
 struct ContentView: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     @StateObject private var popperUpManager = PopperUpManager()
+
+    @State private var showPopUp = false
 
     var body: some View {
         VStack {
@@ -19,6 +23,9 @@ struct ContentView: View {
                     timeout: 3)
             }) {
                 Text("Bottom popup")
+            }
+            Button(action: { showPopUp.toggle() }) {
+                Text("Lite")
             }
             Button(action: {
                 popperUpManager.showPopup(
@@ -30,6 +37,10 @@ struct ContentView: View {
         }
         .frame(minWidth: 300, minHeight: 300)
         .withPopperUp(popperUpManager)
+        .popperUpLite(
+            isPresented: $showPopUp,
+            style: .bottom(title: "Title", type: .success, description: "Description"),
+            backgroundColor: colorScheme == .dark ? .black : .white)
     }
 }
 
