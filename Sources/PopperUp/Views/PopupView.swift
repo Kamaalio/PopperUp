@@ -8,18 +8,34 @@
 import SwiftUI
 
 struct PopupView: View {
-    @ObservedObject var manager: PopperUpManager
+    let style: PopperUpStyles
+    let backgroundColor: Color
+    let onClose: () -> Void
 
     var body: some View {
-        switch manager.style {
-        case .bottom: BottomPopupView(manager: manager)
-        case .hud: HudPopupView(manager: manager)
+        switch style {
+        case .bottom(let title, let type, let description):
+            BottomPopupView(
+                title: title,
+                description: description,
+                backgroundColor: backgroundColor,
+                bottomType: type,
+                close: onClose)
+        case .hud(let title, let systemImageName, let description):
+            HudPopupView(
+                title: title,
+                description: description,
+                systemImageName: systemImageName,
+                backgroundColor: backgroundColor,
+                onClose: onClose)
         }
     }
 }
 
 struct PopupView_Previews: PreviewProvider {
     static var previews: some View {
-        PopupView(manager: .init())
+        PopupView(style: .bottom(title: "Title", type: .success, description: "Description"),
+                  backgroundColor: PopperUpManager().config.backgroundColor,
+                  onClose: { })
     }
 }

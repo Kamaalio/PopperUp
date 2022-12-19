@@ -9,20 +9,24 @@ import SwiftUI
 import SalmonUI
 
 struct HudPopupView: View {
-    @ObservedObject var manager: PopperUpManager
-
     @State private var offset: CGSize = .zero
+
+    let title: String
+    let description: String?
+    let systemImageName: String?
+    let backgroundColor: Color
+    let onClose: () -> Void
 
     var body: some View {
         KJustStack {
             HStack {
-                if let systemImageName = manager.systemImageName {
+                if let systemImageName = systemImageName {
                     Image(systemName: systemImageName)
                         .size(Self.imageSize)
                 }
                 VStack {
-                    Text(manager.title)
-                    if let description = manager.description {
+                    Text(title)
+                    if let description = description {
                         Text(description)
                             .font(.callout)
                             .foregroundColor(.secondary)
@@ -33,7 +37,7 @@ struct HudPopupView: View {
             }
             .padding(.vertical, 4)
             .padding(.horizontal, 12)
-            .background(manager.config.backgroundColor)
+            .background(backgroundColor)
             .cornerRadius(24)
         }
         .ktakeWidthEagerly(alignment: .center)
@@ -54,7 +58,7 @@ struct HudPopupView: View {
 
     private func onDragEnd(_ value: DragGesture.Value) {
         if offset.height < -12 {
-            manager.hidePopup()
+            onClose()
         } else {
             offset = .zero
         }
@@ -65,6 +69,11 @@ struct HudPopupView: View {
 
 struct HudPopupView_Previews: PreviewProvider {
     static var previews: some View {
-        HudPopupView(manager: .init())
+        HudPopupView(
+            title: "Title",
+            description: "Description",
+            systemImageName: "person",
+            backgroundColor: PopperUpManager().config.backgroundColor,
+            onClose: { })
     }
 }
