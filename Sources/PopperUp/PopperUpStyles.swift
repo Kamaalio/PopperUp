@@ -10,6 +10,15 @@ import SwiftUI
 public enum PopperUpStyles {
     case bottom(title: String, type: PopperUpBottomType, description: String?)
     case hud(title: String, systemImageName: String, description: String?)
+
+    var alignment: Alignment {
+        switch self {
+        case .bottom:
+            return .bottom
+        case .hud:
+            return .top
+        }
+    }
 }
 
 public enum PopperUpBottomType {

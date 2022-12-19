@@ -9,26 +9,43 @@ import SwiftUI
 import SalmonUI
 
 struct BottomPopupView: View {
-    @ObservedObject var manager: PopperUpManager
+    let title: String
+    let description: String?
+    let backgroundColor: Color
+    let bottomType: PopperUpBottomType?
+    let close: () -> Void
+
+    init(
+        title: String,
+        description: String?,
+        backgroundColor: Color,
+        bottomType: PopperUpBottomType?,
+        close: @escaping () -> Void) {
+            self.title = title
+            self.description = description
+            self.backgroundColor = backgroundColor
+            self.bottomType = bottomType
+            self.close = close
+        }
 
     var body: some View {
         KJustStack {
             HStack(alignment: .top) {
-                if let bottomType = manager.bottomType {
+                if let bottomType = bottomType {
                     Image(systemName: bottomType.iconName)
                         .foregroundColor(bottomType.color)
                     VStack(alignment: .leading) {
-                        Text(manager.title)
+                        Text(title)
                             .foregroundColor(bottomType.color)
                             .bold()
-                        if let description = manager.description {
+                        if let description = description {
                             Text(description)
                                 .foregroundColor(.secondary)
                         }
                     }
                 }
                 Spacer()
-                Button(action: { manager.hidePopup() }) {
+                Button(action: close) {
                     Image(systemName: "xmark")
                         .bold()
                         .foregroundColor(.secondary)
@@ -38,7 +55,7 @@ struct BottomPopupView: View {
             .padding(.all, 16)
         }
         .ktakeWidthEagerly(alignment: .center)
-        .background(manager.config.backgroundColor)
+        .background(backgroundColor)
         .cornerRadius(8)
         .padding(.bottom, 8)
         .transition(.move(edge: .bottom))
@@ -47,6 +64,10 @@ struct BottomPopupView: View {
 
 struct BottomPopupView_Previews: PreviewProvider {
     static var previews: some View {
-        BottomPopupView(manager: .init())
+        BottomPopupView(
+            title: "Title",
+            description: "Description",
+            backgroundColor: PopperUpConfig().backgroundColor,
+            bottomType: .error, close: { })
     }
 }
