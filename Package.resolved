@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "SalmonUI",
-        "repositoryURL": "https://github.com/kamaal111/SalmonUI.git",
+        "repositoryURL": "https://github.com/Kamaalio/SalmonUI.git",
         "state": {
           "branch": null,
-          "revision": "aa14f70393017dac784853d77c8179622527203d",
-          "version": "5.0.0"
+          "revision": "add6319b93b53a7330d82a06c66e11c6c5b13d30",
+          "version": "5.1.0"
         }
       }
     ]
